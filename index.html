@@ -86,6 +86,7 @@
             background-color: #fff;
             cursor: pointer;
             transition: border-color 0.2s;
+            font-weight: 500;
         }
 
         .custom-select:focus {
@@ -148,7 +149,7 @@
         }
 
         .btn-submit {
-            background-color: #10b981; /* MÀU XANH LÁ CHUẨN TRONG ẢNH */
+            background-color: #10b981;
             color: #ffffff;
             font-size: 16px;
             font-weight: 700;
@@ -195,22 +196,22 @@
                     </div>
                     <select id="serviceSelect" class="custom-select" required>
                         <option value="" disabled selected>Tìm và chọn gói dịch vụ cần thuê...</option>
-                        <option value="Dragon West - 440.000đ/480.000đ">Dragon West - 440.000đ/480.000đ</option>
-                        <option value="Dragon East - 400.000đ/440.000đ">Dragon East - 400.000đ/440.000đ</option>
-                        <option value="Kitsune - 60.000đ/80.000đ">Kitsune - 60.000đ/80.000đ</option>
-                        <option value="Yeti - 25.000đ/40.000đ">Yeti - 25.000đ/40.000đ</option>
-                        <option value="Control - 27.000đ/40.000đ">Control - 27.000đ/40.000đ</option>
-                        <option value="Tiger - 25.000đ/40.000đ">Tiger - 25.000đ/40.000đ</option>
-                        <option value="Lightning - 20.000đ/30.000đ">Lightning - 20.000đ/30.000đ</option>
-                        <option value="Dough - 20.000đ/30.000đ">Dough - 20.000đ/30.000đ</option>
-                        <option value="T-Rex - 15.000đ/20.000đ">T-Rex - 15.000đ/20.000đ</option>
-                        <option value="Gas - 15.000đ/20.000đ">Gas - 15.000đ/20.000đ</option>
-                        <option value="Buddha - 10.000đ/10.000đ">Buddha - 10.000đ/10.000đ</option>
-                        <option value="Portal - 10.000đ/10.000đ">Portal - 10.000đ/10.000đ</option>
-                        <option value="Shadow - 10.000đ/10.000đ">Shadow - 10.000đ/10.000đ</option>
-                        <option value="Venom - 10.000đ/10.000đ">Venom - 10.000đ/10.000đ</option>
-                        <option value="Spirit - 10.000đ/10.000đ">Spirit - 10.000đ/10.000đ</option>
-                        <option value="Mammoth - 10.000đ/10.000đ">Mammoth - 10.000đ/10.000đ</option>
+                        <option value="Dragon West - STK: 440.000đ | CARD: 480.000đ">Dragon West - STK: 440.000đ | CARD: 480.000đ</option>
+                        <option value="Dragon East - STK: 400.000đ | CARD: 440.000đ">Dragon East - STK: 400.000đ | CARD: 440.000đ</option>
+                        <option value="Kitsune - STK: 60.000đ | CARD: 80.000đ">Kitsune - STK: 60.000đ | CARD: 80.000đ</option>
+                        <option value="Yeti - STK: 25.000đ | CARD: 40.000đ">Yeti - STK: 25.000đ | CARD: 40.000đ</option>
+                        <option value="Control - STK: 27.000đ | CARD: 40.000đ">Control - STK: 27.000đ | CARD: 40.000đ</option>
+                        <option value="Tiger - STK: 25.000đ | CARD: 40.000đ">Tiger - STK: 25.000đ | CARD: 40.000đ</option>
+                        <option value="Lightning - STK: 20.000đ | CARD: 30.000đ">Lightning - STK: 20.000đ | CARD: 30.000đ</option>
+                        <option value="Dough - STK: 20.000đ | CARD: 30.000đ">Dough - STK: 20.000đ | CARD: 30.000đ</option>
+                        <option value="T-Rex - STK: 15.000đ | CARD: 20.000đ">T-Rex - STK: 15.000đ | CARD: 20.000đ</option>
+                        <option value="Gas - STK: 15.000đ | CARD: 20.000đ">Gas - STK: 15.000đ | CARD: 20.000đ</option>
+                        <option value="Buddha - STK: 10.000đ | CARD: 10.000đ">Buddha - STK: 10.000đ | CARD: 10.000đ</option>
+                        <option value="Portal - STK: 10.000đ | CARD: 10.000đ">Portal - STK: 10.000đ | CARD: 10.000đ</option>
+                        <option value="Shadow - STK: 10.000đ | CARD: 10.000đ">Shadow - STK: 10.000đ | CARD: 10.000đ</option>
+                        <option value="Venom - STK: 10.000đ | CARD: 10.000đ">Venom - STK: 10.000đ | CARD: 10.000đ</option>
+                        <option value="Spirit - STK: 10.000đ | CARD: 10.000đ">Spirit - STK: 10.000đ | CARD: 10.000đ</option>
+                        <option value="Mammoth - STK: 10.000đ | CARD: 10.000đ">Mammoth - STK: 10.000đ | CARD: 10.000đ</option>
                     </select>
                 </div>
 
@@ -249,9 +250,9 @@
 
     </div>
 
-    <!-- JAVASCRIPT ĐẾM KÝ TỰ & BẤM TẠO ĐƠN -->
+    <!-- JAVASCRIPT XỬ LÝ -->
     <script>
-        // Đếm ký tự khi gõ ghi chú
+        // Đếm ký tự ghi chú
         const noteInput = document.getElementById('noteInput');
         const charNum = document.getElementById('charNum');
 
@@ -259,15 +260,15 @@
             charNum.textContent = this.value.length;
         });
 
-        // Xử lý sự kiện tạo đơn
+        // Xử lý tạo đơn hàng
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
             const selectedService = document.getElementById('serviceSelect').value;
 
             if (selectedService) {
-                alert("✅ Bạn đã chọn: " + selectedService + "\nĐang chuyển sang Zalo hỗ trợ...");
-                window.location.href = "https://zalo.me/0392192506"; // Thay bằng link Admin Zalo của bạn
+                alert("✅ Bạn đã chọn:\n" + selectedService + "\n\nĐang chuyển sang Zalo hỗ trợ...");
+                window.location.href = "https://zalo.me/0392192506"; // Thay bằng link Admin Zalo
             } else {
                 alert("⚠️ Vui lòng chọn gói cần thuê trước khi tạo đơn!");
             }
