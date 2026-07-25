@@ -1,1 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Hàng Dịch Vụ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
 
+        body {
+            background-color: #f3f5f8;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-wrapper {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* TIÊU ĐỀ THÔNG BÁO ĐỎ */
+        .top-notice {
+            color: #dc2626;
+            font-size: 14px;
+            font-weight: 800;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        /* KHUNG FORM CHÍNH */
+        .form-card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            padding: 35px 40px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        /* BƯỚC NÚT TRÒN XANH */
+        .step-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+            font-weight: 800;
+            color: #1e1135;
+            margin-bottom: 15px;
+        }
+
+        .step-num {
+            background-color: #2563eb;
+            color: #ffffff;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* Ô SELECT CHỌN GÓI */
+        .custom-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #334155;
+            outline: none;
+            background-color: #fff;
+            cursor: pointer;
+            transition: border-color 0.2s;
+        }
+
+        .custom-select:focus {
+            border-color: #2563eb;
+        }
+
+        /* BƯỚC 2: KHUNG NÉT ĐỨT KHUYÊN BẢO */
+        .notice-box {
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 10px;
+            padding: 18px 20px;
+            font-size: 13.5px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* BƯỚC 3: TEXTAREA GHI CHÚ */
+        .field-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .custom-textarea {
+            width: 100%;
+            height: 110px;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+
+        .custom-textarea:focus {
+            border-color: #2563eb;
+        }
+
+        .char-count {
+            text-align: right;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 6px;
+        }
+
+        /* KHU VỰC NÚT BẤM */
+        .action-area {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .warning-text {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+
+        .btn-submit {
+            background-color: #10b981; /* MÀU XANH LÁ CHUẨN TRONG ẢNH */
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 12px 36px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 600px) {
+            .form-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        
+        <!-- TIÊU ĐỀ THÔNG BÁO ĐỎ -->
+        <div class="top-notice">
+            ĐIỀN ĐÚNG THÔNG TIN CẦN THIẾT HOẶC LIÊN HỆ ADMIN | CUỐI TRANG | ĐỂ HOÀN THÀNH ĐƠN
+        </div>
+
+        <div class="form-card">
+            <form id="orderForm">
+                
+                <!-- BƯỚC 1: CHỌN GÓI CẦN THUÊ -->
+                <div class="form-group">
+                    <div class="step-title">
+                        <span class="step-num">1</span>
+                        <span>Chọn Gói Cần Thuê</span>
+                    </div>
+                    <select id="serviceSelect" class="custom-select" required>
+                        <option value="" disabled selected>Tìm và chọn gói dịch vụ cần thuê...</option>
+                        <option value="Dragon West - 440.000đ/480.000đ">Dragon West - 440.000đ/480.000đ</option>
+                        <option value="Dragon East - 400.000đ/440.000đ">Dragon East - 400.000đ/440.000đ</option>
+                        <option value="Kitsune - 60.000đ/80.000đ">Kitsune - 60.000đ/80.000đ</option>
+                        <option value="Yeti - 25.000đ/40.000đ">Yeti - 25.000đ/40.000đ</option>
+                        <option value="Control - 27.000đ/40.000đ">Control - 27.000đ/40.000đ</option>
+                        <option value="Tiger - 25.000đ/40.000đ">Tiger - 25.000đ/40.000đ</option>
+                        <option value="Lightning - 20.000đ/30.000đ">Lightning - 20.000đ/30.000đ</option>
+                        <option value="Dough - 20.000đ/30.000đ">Dough - 20.000đ/30.000đ</option>
+                        <option value="T-Rex - 15.000đ/20.000đ">T-Rex - 15.000đ/20.000đ</option>
+                        <option value="Gas - 15.000đ/20.000đ">Gas - 15.000đ/20.000đ</option>
+                        <option value="Buddha - 10.000đ/10.000đ">Buddha - 10.000đ/10.000đ</option>
+                        <option value="Portal - 10.000đ/10.000đ">Portal - 10.000đ/10.000đ</option>
+                        <option value="Shadow - 10.000đ/10.000đ">Shadow - 10.000đ/10.000đ</option>
+                        <option value="Venom - 10.000đ/10.000đ">Venom - 10.000đ/10.000đ</option>
+                        <option value="Spirit - 10.000đ/10.000đ">Spirit - 10.000đ/10.000đ</option>
+                        <option value="Mammoth - 10.000đ/10.000đ">Mammoth - 10.000đ/10.000đ</option>
+                    </select>
+                </div>
+
+                <!-- BƯỚC 2: XÁC NHẬN ĐẶT HÀNG -->
+                <div class="form-group">
+                    <div class="step-title">
+                        <span class="step-num">2</span>
+                        <span>Xác Nhận Đặt Hàng</span>
+                    </div>
+                    <div class="notice-box">
+                        📌 Quý khách vui lòng kiểm tra kỹ gói cày thuê đã chọn trước khi tạo đơn hàng. Sau khi tạo đơn, liên hệ Admin để được hỗ trợ xử lý nhanh nhất.
+                    </div>
+                </div>
+
+                <!-- BƯỚC 3: GHI CHÚ & XÁC NHẬN -->
+                <div class="form-group">
+                    <div class="step-title">
+                        <span class="step-num">3</span>
+                        <span>Ghi Chú & Xác Nhận</span>
+                    </div>
+                    <label class="field-label">Ghi Chú</label>
+                    <textarea id="noteInput" class="custom-textarea" maxlength="500" placeholder="Nhập ghi chú cho admin nếu có..."></textarea>
+                    <div class="char-count"><span id="charNum">0</span> / 500</div>
+                </div>
+
+                <!-- NÚT TẠO ĐƠN HÀNG XANH LÁ -->
+                <div class="action-area">
+                    <p class="warning-text">Vui lòng chọn gói cần thuê</p>
+                    <button type="submit" class="btn-submit">
+                        <i class="fa-solid fa-cart-shopping"></i> Tạo Đơn Hàng
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT ĐẾM KÝ TỰ & BẤM TẠO ĐƠN -->
+    <script>
+        // Đếm ký tự khi gõ ghi chú
+        const noteInput = document.getElementById('noteInput');
+        const charNum = document.getElementById('charNum');
+
+        noteInput.addEventListener('input', function() {
+            charNum.textContent = this.value.length;
+        });
+
+        // Xử lý sự kiện tạo đơn
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const selectedService = document.getElementById('serviceSelect').value;
+
+            if (selectedService) {
+                alert("✅ Bạn đã chọn: " + selectedService + "\nĐang chuyển sang Zalo hỗ trợ...");
+                window.location.href = "https://zalo.me"; // Thay bằng link Admin Zalo của bạn
+            } else {
+                alert("⚠️ Vui lòng chọn gói cần thuê trước khi tạo đơn!");
+            }
+        });
+    </script>
+
+</body>
+</html>
